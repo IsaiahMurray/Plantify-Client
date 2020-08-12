@@ -31,9 +31,9 @@ const PlantResults = (props) => {
         image: plant.image_url,
       },
     };
-    console.log(newPlantData);
+    console.log('Plant data: ', newPlantData);
 
-    fetch("http://localhost:3002/plant/create", {
+    fetch("https://plantify-server.herokuapp.com/plant/save", {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",

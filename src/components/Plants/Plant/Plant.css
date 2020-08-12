@@ -39,3 +39,20 @@
     border-radius: 5px;
     color:  grey;
 }
+
+#plant-form-paper{
+    text-align: center;
+    box-shadow: 10px 10px 10px 10px grey;
+}
+
+#plant-create-container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../../assets/plants3.jpg);
+    overflow: hidden;
+    background-size: cover;
+}
+
+.plant-create-input{
+    color: seagreen !important;
+}
