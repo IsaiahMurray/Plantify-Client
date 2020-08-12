@@ -11,7 +11,7 @@ const Signup = (props) => {
   let handleSubmit = (event) => {
     //4
     event.preventDefault();
-    fetch("http://localhost:3002/api/create", {
+    fetch("https://plantify-server.herokuapp.com/user/create", {
       //5
       method: "POST",
       body: JSON.stringify({
