@@ -1,0 +1,41 @@
+.plants{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.plant {
+    border-radius: 5px;
+    width: 210px;
+    min-height: 490px;
+    text-align: center;
+    margin: auto auto;
+    margin-bottom: 10px;
+    box-shadow: 10px 10px 10px 10px grey;
+}
+
+.mainDiv{
+    text-align: center;
+}
+
+.mainDiv > form{
+    margin-top: 0px;
+}
+
+.main{
+    min-height: 100vh;
+    background-image: url(../../../assets/plants1.jpg);
+    background-position: center;
+    background-size: fill;
+    object-fit: contain;
+}
+
+#submit-button{
+    background-color: seagreen;
+    color: white;
+}
+
+#plant-search{
+    background-color: white;
+    border-radius: 5px;
+    color:  grey;
+}
