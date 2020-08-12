@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Sitebar from './components/Navbar/Navbar';
 import Auth from './components/Auth/Auth';
-import Plants from './components/Plants/Plant/Plant';
+import Plants from './components/Plants/Plant/PlantCreate';
 import PlantApp from './components/Plants/Plant/PlantApp';
 import Landing from './components/LandingPage/Landing';
-import Plant from './components/Plants/Plant/Plant';
+import PlantCreate from './components/Plants/Plant/PlantCreate';
 
 function App() {
   const [sessionToken, setSessionToken] = useState(''); //1
@@ -37,6 +37,7 @@ function App() {
       <Sitebar clickLogout={clearToken}/>
       {protectedViews()}
       {/* <PlantApp/> */}
+      {/* <PlantCreate/> */}
     </div>
   );
 }
