@@ -39,7 +39,7 @@ const PlantResults = (props) => {
         notes: plant.notes
       },
     };
-    console.log(newPlantData);
+    console.log('Plant data: ', newPlantData);
 
     fetch("https://plantify-server.herokuapp.com/plant/create", {
       method: "POST",

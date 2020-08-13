@@ -1,17 +1,17 @@
 .auth-container {
-  /* background-image: url(../../assets/plantifyBackground.jpg); */
+  background-image: url(../../assets/plantifyBackground.svg);
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   text-align: center;
   background-repeat: no-repeat;
   overflow: hidden;
   background-size: cover;
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 #login-signup {
-  box-shadow: 10px 10px 10px 10px grey;
+  box-shadow: 5px 5px 5px 5px black;
   max-width: 300px;
   margin: auto auto;
   border-radius: 5px;
@@ -29,7 +29,7 @@
 }
 
 #login-signup-grid {
-  /* margin-top: 50px; */
+  margin-top: 50px;
 }
 
 #toggle-button {

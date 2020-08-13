@@ -1,4 +1,4 @@
-.plants{
+.plants {
     display: flex;
     flex-wrap: wrap;
 }
@@ -13,15 +13,15 @@
     box-shadow: 10px 10px 10px 10px grey;
 }
 
-.mainDiv{
+.mainDiv {
     text-align: center;
 }
 
-.mainDiv > form{
+.mainDiv > form {
     margin-top: 0px;
 }
 
-.main{
+.main {
     min-height: 100vh;
     background-image: url(../../../assets/plants1.jpg);
     background-position: center;
@@ -29,13 +29,30 @@
     object-fit: contain;
 }
 
-#submit-button{
+#submit-button {
     background-color: seagreen;
     color: white;
 }
 
-#plant-search{
+#plant-search {
     background-color: white;
     border-radius: 5px;
     color:  grey;
+}
+
+#plant-form-paper{
+    text-align: center;
+    box-shadow: 10px 10px 10px 10px grey;
+}
+
+#plant-create-container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../../assets/plants3.jpg);
+    overflow: hidden;
+    background-size: cover;
+}
+
+.plant-create-input{
+    color: seagreen !important;
 }
