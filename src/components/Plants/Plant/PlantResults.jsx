@@ -101,7 +101,7 @@ const PlantResults = (props) => {
                     src={plant.image_url}
                   />
                 </Paper>
-                <Button type='submit' id="submit-button" onClick={props.handleSubmit}  >Save</Button>
+                <Button type='submit' id="submit-button" onClick={props.handleSubmit}>Save</Button>
               </Grid>
             ))}
         </Grid>
