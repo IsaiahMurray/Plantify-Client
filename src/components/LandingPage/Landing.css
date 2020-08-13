@@ -1,1 +1,6 @@
-
+.body {
+    border: 2rem solid black;
+    background-image: url('../../assets/plantifyBackground.svg') no-repeat fixed;
+    background-size: cover;
+    
+}
