@@ -100,7 +100,5 @@ Filter Plants{
     onCheck => add url section
     concatenate url
     return new url then fetch
-
 }
-
 */

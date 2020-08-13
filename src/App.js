@@ -27,17 +27,17 @@ function App() {
     setSessionToken('')
   }
 
-  // const protectedViews = () => {
-  //   return (sessionToken === localStorage.getItem('token') ? <PlantApp token={sessionToken}/>
-  //   : <Auth updateToken={updateToken}/>)
-  // }
+  const protectedViews = () => {
+    return (sessionToken === localStorage.getItem('token') ? <PlantApp token={sessionToken}/>
+    : <Auth updateToken={updateToken}/>)
+  }
 
   return (
     <div>
-      {/* <Sitebar clickLogout={clearToken}/>
-      {protectedViews()} */}
-      {/* <PlantApp/> */}
-      <PlantCreate/>
+      <Sitebar clickLogout={clearToken}/>
+      {protectedViews()}
+      <PlantApp/>
+      {/* <PlantCreate/> */}
     </div>
   );
 }
