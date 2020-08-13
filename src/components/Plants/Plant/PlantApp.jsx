@@ -50,14 +50,14 @@ const PlantApp = () => {
         }).then(res => res.json())
           .then(logData => {
            
-        setCommonName('results.commonName');
-        setFamily('results.family');
-        setFamilyCommonName('a');
-        setScientificName('b');
-        setGenus('c');
-        setImage('1234')
-        setDescription('d');
-        setNotes('e');
+        setCommonName(logData.commonName);
+        setFamily(logData.family);
+        setFamilyCommonName(logData.familyCommonName);
+        setScientificName(logData.scientificName);
+        setGenus(logData.genus);
+        setImage(logData.image)
+        setDescription();
+        setNotes('');
         // props.newPlantData();
           })
 

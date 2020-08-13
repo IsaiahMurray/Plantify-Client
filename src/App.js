@@ -36,7 +36,7 @@ function App() {
     <div>
       <Sitebar clickLogout={clearToken}/>
       {protectedViews()}
-      <PlantApp/>
+      {/* <PlantApp/> */}
       {/* <PlantCreate/> */}
     </div>
   );
