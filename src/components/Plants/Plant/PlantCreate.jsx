@@ -54,14 +54,13 @@ const PlantCreate = (props) => {
         )
         .then((data) => {
           console.log(data);
-          setCommonName(data.commonName);
-          setFamily(data.Family);
-          setFamilyCommonName();
-          setScientificName();
-          setGenus();
-          setImage();
-          setDescription();
-          setNotes();
+          setCommonName('data.commonName');
+          setFamily('data.Family');
+          setFamilyCommonName('a');
+          setScientificName('a')
+          setImage('a');
+          setDescription('a');
+          setNotes('a');
           //setOwner('');
           // props.plantCreate();
         });

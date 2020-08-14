@@ -43,9 +43,9 @@ const getSubmit = () =>{
 
         });
     };
-    useEffect(()=>{
-        getSubmit();
-    },[])
+    // useEffect(()=>{
+    //     getSubmit();
+    // },[])
     return (
 
         <>

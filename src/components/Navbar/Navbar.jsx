@@ -24,7 +24,7 @@ const SiteBar = (props) => {
 
   return (
     <>
-<PlantIndex/>
+{/* <PlantIndex/> */}
       <AppBar id="app-bar" position="static">
         {/* <Link to="/PlantIndex">My Plants</Link>
         <Switch>

@@ -8,7 +8,7 @@ const baseUrl = 'https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/pl
 // const key = '9QePtJRqe4GgPE067uVCYxcboJgs4Kj-Cec6-wrfwDE';
 const key = 'U2UJDvUXm3lQGZyaFupZoAs9J_D8wNBWW0XRmOznJSg'
 
-const PlantApp = () => {
+const PlantApp = (props) => {
 
     const [search, setSearch] = useState('');
     const [results, setResults] = useState([]);
@@ -39,19 +39,9 @@ const PlantApp = () => {
     }
 
     const createSubmit = (e) => {
-        // e.prevent.default();
-        console.log('createSubmitHit',results[0])
-        fetch('https://plantify-server.herokuapp.com/plant/create', {
-          method: 'POST',
-          body: JSON.stringify({plant:{commonName: commonName, family:family, familyCommonName: familyCommonName, scientificName:scientificName, genus:genus, description:description, notes: notes}}),
-          headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token'),
-          })
-        }).then(res => res.json())
-          .then(logData => {
-           
-        setCommonName(PlantApp.commonName);
+        console.log(e.target);
+        
+        setCommonName(results.commonName);
         setFamily('1');
         setFamilyCommonName('a');
         setScientificName('b');
@@ -59,18 +49,39 @@ const PlantApp = () => {
         setImage('1234')
         setDescription('d');
         setNotes('e');
-        // // props.newPlantData();
-        // setCommonName(logData.commonName);
-        // setFamily(logData.family);
-        // setFamilyCommonName(logData.familyCommonName);
-        // setScientificName(logData.scientificName);
-        // setGenus(logData.genus);
-        // setImage(logData.image)
-        // setDescription('');
-        // setNotes(''); 
+
+        console.log(props.commonName)
+        fetch('https://plantify-server.herokuapp.com/plant/create', {
+            method: 'POST',
+            body: JSON.stringify({ plant: { 'commonName': "mint", 'family': 'mint family', 'familyCommonName': 'minty', 'scientificName': 'a sciency name', 'genus': 'yes', 'image': 'an image', 'description': 'a good description', 'notes': 'my notes' } }),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+            })
+        }).then(res => res.json())
+            .then(logData => {
+
+                // let commonName = results.common_name;
+                setCommonName('commonName');
+                setFamily('1');
+                setFamilyCommonName('a');
+                setScientificName('b');
+                setGenus('c');
+                setImage('1234')
+                setDescription('d');
+                setNotes('e');
+                //    newPlantData();
+                // setCommonName(logData.commonName);
+                // setFamily(logData.family);
+                // setFamilyCommonName(logData.familyCommonName);
+                // setScientificName(logData.scientificName);
+                // setGenus(logData.genus);
+                // setImage(logData.image)
+                // setDescription('');
+                // setNotes(''); 
 
           })
-
+            
     }
 
     return (
