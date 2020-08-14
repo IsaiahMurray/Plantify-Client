@@ -5,7 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const baseUrl = 'https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants';
-const key = '9QePtJRqe4GgPE067uVCYxcboJgs4Kj-Cec6-wrfwDE';
+// const key = '9QePtJRqe4GgPE067uVCYxcboJgs4Kj-Cec6-wrfwDE';
+const key = 'U2UJDvUXm3lQGZyaFupZoAs9J_D8wNBWW0XRmOznJSg'
 
 const PlantApp = () => {
 
@@ -39,7 +40,7 @@ const PlantApp = () => {
 
     const createSubmit = (e) => {
         // e.prevent.default();
-        console.log('createSubmitHit',results[1])
+        console.log('createSubmitHit',results[0])
         fetch('https://plantify-server.herokuapp.com/plant/create', {
           method: 'POST',
           body: JSON.stringify({plant:{commonName: commonName, family:family, familyCommonName: familyCommonName, scientificName:scientificName, genus:genus, description:description, notes: notes}}),
@@ -50,15 +51,24 @@ const PlantApp = () => {
         }).then(res => res.json())
           .then(logData => {
            
-        setCommonName('results.commonName');
-        setFamily('results.family');
+        setCommonName(PlantApp.commonName);
+        setFamily('1');
         setFamilyCommonName('a');
         setScientificName('b');
         setGenus('c');
         setImage('1234')
         setDescription('d');
         setNotes('e');
-        // props.newPlantData();
+        // // props.newPlantData();
+        // setCommonName(logData.commonName);
+        // setFamily(logData.family);
+        // setFamilyCommonName(logData.familyCommonName);
+        // setScientificName(logData.scientificName);
+        // setGenus(logData.genus);
+        // setImage(logData.image)
+        // setDescription('');
+        // setNotes(''); 
+
           })
 
     }
@@ -102,3 +112,4 @@ Filter Plants{
     return new url then fetch
 }
 */
+

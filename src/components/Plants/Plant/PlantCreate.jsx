@@ -6,8 +6,10 @@ import FormLabel from "@material-ui/core/FormLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import "./Plant.css";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
 
 
 const PlantCreate = (props) => {
@@ -22,12 +24,15 @@ const PlantCreate = (props) => {
     //const [owner, setOwner] = useState('');
 
     const handleSubmit = (event) => {
+      
         event.preventDefault();
         fetch("https://plantify-server.herokuapp.com/plant/create", {
           
           method: "POST",
           body: JSON.stringify({
+            
             plant: { 
+              
                 commonName: commonName, 
                 family: family,
                 familyCommonName: familyCommonName,
@@ -49,96 +54,264 @@ const PlantCreate = (props) => {
         )
         .then((data) => {
           console.log(data);
-          setCommonName('');
-          setFamily('');
-          setFamilyCommonName('');
-          setScientificName('');
-          setGenus('');
-          setImage('');
-          setDescription('');
-          setNotes('');
+          setCommonName(data.commonName);
+          setFamily(data.Family);
+          setFamilyCommonName();
+          setScientificName();
+          setGenus();
+          setImage();
+          setDescription();
+          setNotes();
           //setOwner('');
+          // props.plantCreate();
         });
     };
     
   return (
-    <Grid id="plant-create-container" container justify="center">
-      <Grid id="plant-form">
-        <Paper id="plant-form-paper">
-          <h2>Add a Plant</h2>
-          <TextField
+
+    <div>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <br/>
+          <Input
             className="plant-create-input"
             variant="outlined"
             margin="normal"
             required
             type="text"
             label="Plant Name"
+            value={commonName}
             onChange={(e) => setCommonName(e.target.value)}
           />
-
-          <TextField
+          <br/>
+          <Input
             className="plant-create-input"
             variant="outlined"
             margin="normal"
             type="text"
             label="Scientific Name"
+            value={scientificName}
             onChange={(e) => setScientificName(e.target.value)}
           />
-          <br />
-          <TextField
+          <br/>
+          <Input
             className="plant-create-input"
             variant="outlined"
             margin="normal"
             type="text"
             label="Plant Family"
+            value={familyCommonName}
             onChange={(e) => setFamilyCommonName(e.target.value)}
           />
-
-          <TextField
+          <br/>
+          <Input
             className="plant-create-input"
             variant="outlined"
             margin="normal"
             type="text"
             label="Genus"
+            value={genus}
             onChange={(e) => setGenus(e.target.value)}
           />
-          <br />
-
-          <TextField
+          <br/>
+          <Input
             className="plant-create-input"
             variant="outlined"
             margin="normal"
             type="text"
             label="Image Url"
+            value={image}
             onChange={(e) => setImage(e.target.value)}
           />
-
-          <TextField
+          <br/>
+          <Input
             className="plant-create-input"
             variant="outlined"
             margin="normal"
             type="text"
             label="Description"
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <br />
-          <TextField
+          <br/>
+          <Input
             className="plant-create-input"
             variant="outlined"
             margin="normal"
             type="text"
             label="Extra notes"
+            value={notes}
             onChange={(e) => setNotes(e.target.value)}
           />
-          <br />
-          <Button onClick={handleSubmit} id="submit-button" type="submit">
-            Submit
-          </Button>
-          <br />
-          <br />
-        </Paper>
-      </Grid>
-    </Grid>
+          <br/>
+        </FormGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    </div>
+
+
+
+
+
+
+
+    // <Grid id="plant-create-container" container justify="center">
+    //   <Grid onSubmit={handleSubmit}  id="plant-form">
+    //     <Paper id="plant-form-paper">
+    //       <h2>Add a Plant</h2>
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         required
+    //         type="text"
+    //         label="Plant Name"
+    //         value={commonName}
+    //         onChange={(e) => setCommonName(e.target.value)}
+    //       />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Scientific Name"
+    //         value={scientificName}
+    //         onChange={(e) => setScientificName(e.target.value)}
+    //       />
+    //       <br />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Plant Family"
+    //         value={familyCommonName}
+    //         onChange={(e) => setFamilyCommonName(e.target.value)}
+    //       />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Genus"
+    //         value={genus}
+    //         onChange={(e) => setGenus(e.target.value)}
+    //       />
+    //       <br />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Image Url"
+    //         value={image}
+    //         onChange={(e) => setImage(e.target.value)}
+    //       />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Description"
+    //         value={description}
+    //         onChange={(e) => setDescription(e.target.value)}
+    //       />
+    //       <br />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Extra notes"
+    //         value={notes}
+    //         onChange={(e) => setNotes(e.target.value)}
+    //       />
+    //       <br />
+    //       <Button  id="submit-button" type="submit">
+    //         Submit
+    //       </Button>
+    //       <br />
+    //       <br />
+    //     </Paper>
+    //   </Grid>
+    // </Grid>
+    // <Grid id="plant-create-container" container justify="center">
+    //   <Grid id="plant-form">
+    //     <Paper id="plant-form-paper">
+    //       <h2>Add a Plant</h2>
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         required
+    //         type="text"
+    //         label="Plant Name"
+    //         onChange={(e) => setCommonName(e.target.value)}
+    //       />
+
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Scientific Name"
+    //         onChange={(e) => setScientificName(e.target.value)}
+    //       />
+    //       <br />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Plant Family"
+    //         onChange={(e) => setFamilyCommonName(e.target.value)}
+    //       />
+
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Genus"
+    //         onChange={(e) => setGenus(e.target.value)}
+    //       />
+    //       <br />
+
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Image Url"
+    //         onChange={(e) => setImage(e.target.value)}
+    //       />
+
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Description"
+    //         onChange={(e) => setDescription(e.target.value)}
+    //       />
+    //       <br />
+    //       <TextField
+    //         className="plant-create-input"
+    //         variant="outlined"
+    //         margin="normal"
+    //         type="text"
+    //         label="Extra notes"
+    //         onChange={(e) => setNotes(e.target.value)}
+    //       />
+    //       <br />
+    //       <Button onClick={handleSubmit} id="submit-button" type="submit">
+    //         Submit
+    //       </Button>
+    //       <br />
+    //       <br />
+    //     </Paper>
+    //   </Grid>
+    // </Grid>
   );
 };
 
