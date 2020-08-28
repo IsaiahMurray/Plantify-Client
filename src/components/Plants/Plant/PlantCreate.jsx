@@ -24,46 +24,46 @@ const PlantCreate = (props) => {
     //const [owner, setOwner] = useState('');
 
     const handleSubmit = (event) => {
+
+      let plant = JSON.stringify({ 
+        commonName: commonName, 
+        family: family,
+        familyCommonName: familyCommonName,
+        scientificName: scientificName,
+        genus: genus,
+        image: image,
+        description: description,
+        notes: notes
+        //owner: owner
+      })
       
         event.preventDefault();
         fetch("https://plantify-server.herokuapp.com/plant/create", {
           
           method: "POST",
-          body: JSON.stringify({
+          body: plant,
             
-            plant: { 
-              
-                commonName: commonName, 
-                family: family,
-                familyCommonName: familyCommonName,
-                scientificName: scientificName,
-                genus: genus,
-                image: image,
-                description: description,
-                notes: notes,
-                //owner: owner
-             },
-          }), 
-          headers: new Headers({
+             
+          headers: {
             "Content-Type": "application/json", 
-            "Authorization" : props.token
-          })
+            "Authorization" : props.token,
+          }
         })
-        .then(
-          (response) => response.json() 
-        )
-        .then((data) => {
-          console.log(data);
-          setCommonName('data.commonName');
-          setFamily('data.Family');
-          setFamilyCommonName('a');
-          setScientificName('a')
-          setImage('a');
-          setDescription('a');
-          setNotes('a');
-          //setOwner('');
-          // props.plantCreate();
-        });
+        .then( (response) => console.log(response) )
+        .catch(error=> console.log(error))
+        
+        // .then((data) => {
+        //   console.log(data);
+        //   setCommonName('data.commonName');
+        //   setFamily('data.Family');
+        //   setFamilyCommonName('a');
+        //   setScientificName('a')
+        //   setImage('a');
+        //   setDescription('a');
+        //   setNotes('a');
+        //   //setOwner('');
+        //   // props.plantCreate();
+        // });
     };
     
   return (

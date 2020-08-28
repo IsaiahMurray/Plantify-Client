@@ -3,6 +3,7 @@ import PlantResults from './PlantResults';
 import './Plant.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useEffect } from 'react';
 
 const baseUrl = 'https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants';
 // const key = '9QePtJRqe4GgPE067uVCYxcboJgs4Kj-Cec6-wrfwDE';
@@ -10,16 +11,19 @@ const key = 'U2UJDvUXm3lQGZyaFupZoAs9J_D8wNBWW0XRmOznJSg'
 
 const PlantApp = (props) => {
 
+    console.log('PLANTAPP: ', props)
+
     const [search, setSearch] = useState('');
     const [results, setResults] = useState([]);
-    const [commonName, setCommonName] = useState('');
-    const [family, setFamily] = useState('');
-    const [familyCommonName, setFamilyCommonName] = useState('');
-    const [scientificName, setScientificName] = useState('');
-    const [genus, setGenus] = useState('');
-    const [image, setImage] = useState('');
-    const [description, setDescription] = useState('');
-    const [notes, setNotes] = useState('');
+    const [plant, setPlant] = useState([]);
+    const [commonName, setCommonName] = useState('mint');
+    const [family, setFamily] = useState('mint');
+    const [familyCommonName, setFamilyCommonName] = useState('mint');
+    const [scientificName, setScientificName] = useState('mint');
+    const [genus, setGenus] = useState('mint');
+    const [image, setImage] = useState('mint');
+    const [description, setDescription] = useState('mint');
+    const [notes, setNotes] = useState('mint');
 
     const fetchSearchResults = () => {
         let url = `${baseUrl}/search?token=${key}&q=${search}`;
@@ -37,52 +41,21 @@ const PlantApp = (props) => {
         event.preventDefault();
         fetchSearchResults();
     }
+useEffect(() => {
 
-    const createSubmit = (e) => {
-        console.log(e.target);
-        
-        setCommonName(results.commonName);
-        setFamily('1');
-        setFamilyCommonName('a');
-        setScientificName('b');
-        setGenus('c');
-        setImage('1234')
-        setDescription('d');
-        setNotes('e');
+    
 
-        console.log(props.commonName)
-        fetch('https://plantify-server.herokuapp.com/plant/create', {
-            method: 'POST',
-            body: JSON.stringify({ plant: { 'commonName': "mint", 'family': 'mint family', 'familyCommonName': 'minty', 'scientificName': 'a sciency name', 'genus': 'yes', 'image': 'an image', 'description': 'a good description', 'notes': 'my notes' } }),
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token'),
-            })
-        }).then(res => res.json())
-            .then(logData => {
-
-                // let commonName = results.common_name;
-                setCommonName('commonName');
-                setFamily('1');
-                setFamilyCommonName('a');
-                setScientificName('b');
-                setGenus('c');
-                setImage('1234')
-                setDescription('d');
-                setNotes('e');
-                //    newPlantData();
-                // setCommonName(logData.commonName);
-                // setFamily(logData.family);
-                // setFamilyCommonName(logData.familyCommonName);
-                // setScientificName(logData.scientificName);
-                // setGenus(logData.genus);
-                // setImage(logData.image)
-                // setDescription('');
-                // setNotes(''); 
-
-          })
-            
+    const testPass = () => {
+        console.log('TEST PASS:', commonName)
     }
+    testPass()
+
+},[plant])
+
+    
+
+    
+    console.log(commonName)
 
     return (
         <div className="main">
@@ -104,8 +77,9 @@ const PlantApp = (props) => {
                         className="submit">Submit Search</Button>
                 </form>
                 <div>
+                    {/* <Button type="button" color="primary" onClick={(e) => createSubmit(e)}>WORK</Button> */}
                 </div>
-                <PlantResults handleSubmit={createSubmit} results={results} />
+                <PlantResults token={props.token} results={results} />
 
             </div>
         </div>
