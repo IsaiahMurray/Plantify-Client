@@ -63,6 +63,7 @@ const PlantResults = (props) => {
                   />
                 </Paper>
                 <Button type='submit' id="submit-button" onClick={() => handleSubmit(plant)}  >Save</Button>
+
               </Grid>
             ))}
         </Grid>

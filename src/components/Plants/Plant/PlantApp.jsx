@@ -43,8 +43,6 @@ const PlantApp = (props) => {
     }
 useEffect(() => {
 
-    
-
     const testPass = () => {
         console.log('TEST PASS:', commonName)
     }
