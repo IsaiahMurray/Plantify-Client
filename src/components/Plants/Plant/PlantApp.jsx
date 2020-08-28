@@ -3,22 +3,27 @@ import PlantResults from './PlantResults';
 import './Plant.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useEffect } from 'react';
 
 const baseUrl = 'https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/plants';
-const key = '9QePtJRqe4GgPE067uVCYxcboJgs4Kj-Cec6-wrfwDE';
+// const key = '9QePtJRqe4GgPE067uVCYxcboJgs4Kj-Cec6-wrfwDE';
+const key = 'U2UJDvUXm3lQGZyaFupZoAs9J_D8wNBWW0XRmOznJSg'
 
-const PlantApp = () => {
+const PlantApp = (props) => {
+
+    console.log('PLANTAPP: ', props)
 
     const [search, setSearch] = useState('');
     const [results, setResults] = useState([]);
-    const [commonName, setCommonName] = useState('');
-    const [family, setFamily] = useState('');
-    const [familyCommonName, setFamilyCommonName] = useState('');
-    const [scientificName, setScientificName] = useState('');
-    const [genus, setGenus] = useState('');
-    const [image, setImage] = useState('');
-    const [description, setDescription] = useState('');
-    const [notes, setNotes] = useState('');
+    const [plant, setPlant] = useState([]);
+    const [commonName, setCommonName] = useState('mint');
+    const [family, setFamily] = useState('mint');
+    const [familyCommonName, setFamilyCommonName] = useState('mint');
+    const [scientificName, setScientificName] = useState('mint');
+    const [genus, setGenus] = useState('mint');
+    const [image, setImage] = useState('mint');
+    const [description, setDescription] = useState('mint');
+    const [notes, setNotes] = useState('mint');
 
     const fetchSearchResults = () => {
         let url = `${baseUrl}/search?token=${key}&q=${search}`;
@@ -36,32 +41,19 @@ const PlantApp = () => {
         event.preventDefault();
         fetchSearchResults();
     }
+useEffect(() => {
 
-    const createSubmit = (e) => {
-        // e.prevent.default();
-        console.log('createSubmitHit',results[1])
-        fetch('https://plantify-server.herokuapp.com/plant/create', {
-          method: 'POST',
-          body: JSON.stringify({plant:{commonName: commonName, family:family, familyCommonName: familyCommonName, scientificName:scientificName, genus:genus, description:description, notes: notes}}),
-          headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token'),
-          })
-        }).then(res => res.json())
-          .then(logData => {
-           
-        setCommonName(logData.commonName);
-        setFamily(logData.family);
-        setFamilyCommonName(logData.familyCommonName);
-        setScientificName(logData.scientificName);
-        setGenus(logData.genus);
-        setImage(logData.image)
-        setDescription();
-        setNotes('');
-        // props.newPlantData();
-          })
-
+    const testPass = () => {
+        console.log('TEST PASS:', commonName)
     }
+    testPass()
+
+},[plant])
+
+    
+
+    
+    console.log(commonName)
 
     return (
         <div className="main">
@@ -83,8 +75,9 @@ const PlantApp = () => {
                         className="submit">Submit Search</Button>
                 </form>
                 <div>
+                    {/* <Button type="button" color="primary" onClick={(e) => createSubmit(e)}>WORK</Button> */}
                 </div>
-                <PlantResults handleSubmit={createSubmit} results={results} />
+                <PlantResults token={props.token} results={results} />
 
             </div>
         </div>
@@ -102,3 +95,4 @@ Filter Plants{
     return new url then fetch
 }
 */
+
